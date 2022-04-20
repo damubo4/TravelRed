@@ -49,7 +49,7 @@
 
       <ng-container class="me-3" matColumnDef="fecha_tour">
         <th mat-header-cell *matHeaderCellDef>Fecha tour</th>
-        <td mat-cell *matCellDef="let element"> {{element.TOU_FECHA}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.TOU_FECHA  | date:'dd/MM/yyyy' }} </td>
       </ng-container>
 
       <ng-container class="me-3" matColumnDef="Acom">
@@ -94,17 +94,17 @@
 
       <ng-container class="me-3" matColumnDef="lugarabono1">
         <th mat-header-cell *matHeaderCellDef>Cuenta Abono 1</th>
-        <td mat-cell *matCellDef="let element"> {{element.res_lugar1}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.CTA_NOMBRE1}} </td>
       </ng-container>
 
       <ng-container class="me-3" matColumnDef="lugarabono2">
         <th mat-header-cell *matHeaderCellDef>Cuenta Abono 2</th>
-        <td mat-cell *matCellDef="let element"> {{element.res_lugar2}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.CTA_NOMBRE2}} </td>
       </ng-container>
 
       <ng-container class="me-3" matColumnDef="lugarabono3">
         <th mat-header-cell *matHeaderCellDef>Cuenta Abono 3</th>
-        <td mat-cell *matCellDef="let element"> {{element.res_lugar3}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.CTA_NOMBRE3}} </td>
       </ng-container>
 
 
@@ -116,11 +116,11 @@
       <ng-container class="me-3" matColumnDef="acciones">
         <th mat-header-cell *matHeaderCellDef>Acciones</th>
         <td mat-cell *matCellDef="let element;">
-          <a routerLink="editReserva/{{ element.id }}" class="pointer">
+          <a routerLink="editReserva/{{ element.RES_ID }}" class="pointer">
             <mat-icon>edit</mat-icon>
           </a>
 
-          <a (click)="eliminarReserva(element.id)" style="color:rgb(194, 45, 45)" class="pointer">
+          <a (click)="eliminarReserva(element.RES_ID)" style="color:rgb(194, 45, 45)" class="pointer">
             <mat-icon>delete</mat-icon>
           </a>
         </td>

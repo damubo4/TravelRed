@@ -34,6 +34,6 @@ export class ClientesService {
   }
 
   getClienteReserva(cedula: any): Observable<any> {
-    return this.http.get(this.url + cedula);
+    return this.http.get(this.url + "lista_clientes_cedula/" + cedula);
   }
 }

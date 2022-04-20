@@ -7,7 +7,7 @@
     <div class="col-lg-6">
       <mat-form-field class="input-container">
         <mat-label>Buscar Cliente</mat-label>
-        <input autocomplete="off" [(ngModel)]='idCliente' (keyup)="buscarCliente()" matInput>
+        <input autocomplete="off" [(ngModel)]='cedulaCliente' (keyup)="buscarCliente()" matInput>
       </mat-form-field>
       <div>
         <span><strong>Nombres:</strong> {{ nombreCliente }}</span><br>
@@ -125,8 +125,8 @@
             <mat-form-field class="input-container">
               <mat-label>Cuenta Abono</mat-label>
               <mat-select formControlName="lugar_abono1">
-                <mat-option *ngFor="let cuenta of cuentas" [value]="cuenta.id">
-                  {{ cuenta.cuenta_titular }}
+                <mat-option *ngFor="let cuenta of cuentas" [value]="cuenta.CTA_ID">
+                  {{ cuenta.CTA_NOMBRE }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -160,8 +160,8 @@
             <mat-form-field class="input-container">
               <mat-label>Cuenta Abono</mat-label>
               <mat-select formControlName="lugar_abono2">
-                <mat-option *ngFor="let cuenta of cuentas" [value]="cuenta.id">
-                  {{ cuenta.cuenta_titular }}
+                <mat-option *ngFor="let cuenta of cuentas" [value]="cuenta.CTA_ID">
+                  {{ cuenta.CTA_NOMBRE }}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -195,8 +195,8 @@
             <mat-form-field class="input-container">
               <mat-label>Cuanta Abono</mat-label>
               <mat-select formControlName="lugar_abono3">
-                <mat-option *ngFor="let cuenta of cuentas" [value]="cuenta.id">
-                  {{ cuenta.cuenta_titular }}
+                <mat-option *ngFor="let cuenta of cuentas" [value]="cuenta.CTA_ID">
+                  {{ cuenta.CTA_NOMBRE }}
                 </mat-option>
               </mat-select>
             </mat-form-field>

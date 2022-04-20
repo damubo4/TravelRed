@@ -36,18 +36,15 @@ export class AddEditAhorroComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private _clienteService: ClientesService,
               private _toursService: ToursService,
-              private _cuentasService: CuentasService,
-              private _reservasService: ReservasService,
+              private _cuentasService: CuentasService,              
               private _ahorrosService: AhorroService,
               private route: Router,
               private snackBar: MatSnackBar,
               private aRoute: ActivatedRoute ) {
 
-    this.myForm = this.fb.group({
-      tou_id: [''],
-      cln_id: [''],
-      rep_gr: [''],
+    this.myForm = this.fb.group({      
       grp_id: [''],
+      rep_gr: [''],
       obs_gr: [''],
       aho_acom: [''],
       aho_extra: [''],
@@ -92,25 +89,24 @@ export class AddEditAhorroComponent implements OnInit {
 
   agregarAhorro() {
 
-    const AHORRO = {
-      id:  this.myForm.get('rep_gr').value,
-      tou_id: this.idTour,
-      cln_id: this.idCliente,
-      rep_gr: this.myForm.get('rep_gr').value,
-      grp_id: this.myForm.get('grp_id').value,
-      obs_gr: this.myForm.get('obs_gr').value,
-      aho_acom: this.myForm.get('aho_acom').value,
-      aho_extra: this.myForm.get('aho_extra').value,
-      aho_fecha1: this.myForm.get('fecha_abono1').value,
-      aho_fecha2: this.myForm.get('fecha_abono2').value,
-      aho_fecha3: this.myForm.get('fecha_abono3').value,
-      aho_abono1: this.myForm.get('valor_abono1').value,
-      aho_abono2: this.myForm.get('valor_abono2').value,
-      aho_abono3: this.myForm.get('valor_abono3').value,
-      aho_lugar1: this.myForm.get('lugar_abono1').value,
-      aho_lugar2: this.myForm.get('lugar_abono2').value,
-      aho_lugar3: this.myForm.get('lugar_abono3').value,
-      aho_obs: this.myForm.get('obs').value
+    const AHORRO = {   
+      // rep_gr: this.myForm.get('rep_gr').value,
+      // grp_id: this.myForm.get('id_gr').value,
+      // obs_gr: this.myForm.get('obs_gr').value,  
+      TOU_ID: this.idTour,
+      CLN_ID: this.idCliente,      
+      AHO_ACOM: this.myForm.get('aho_acom').value,
+      AHO_EXTRA: this.myForm.get('aho_extra').value,
+      AHO_FECHA_ABONO1: this.myForm.get('fecha_abono1').value,
+      AHO_FECHA_ABONO2: this.myForm.get('fecha_abono2').value,
+      AHO_FECHA_ABONO3: this.myForm.get('fecha_abono3').value,
+      AHO_ABONO1: this.myForm.get('valor_abono1').value,
+      AHO_ABONO2: this.myForm.get('valor_abono2').value,
+      AHO_ABONO3: this.myForm.get('valor_abono3').value,
+      AHO_CUEN_ABONO1: this.myForm.get('lugar_abono1').value,
+      AHO_CUEN_ABONO2: this.myForm.get('lugar_abono2').value,
+      AHO_CUEN_ABONO3: this.myForm.get('lugar_abono3').value,
+      AHO_OBSERVACIONES: this.myForm.get('obs').value
     }
 
     if (this.idAhorro !== undefined){
@@ -140,29 +136,28 @@ export class AddEditAhorroComponent implements OnInit {
   editarAhorro() {
     this._ahorrosService.getAhorro(this.idAhorro).subscribe(datos => {
       console.log(datos);
-      this.nombreCliente = 'datos.nombreCliente';
-      this.cedulaCliente = 13134;
-      this.idCliente = 123;
-      this.nombreTour = 'datos.nombreCliente';
-      this.fechaTour = datos.res_fecha1;
-      this.idTour = 1343;
-
+      this.nombreCliente = datos.CLN_NOMBRE;
+      this.cedulaCliente = datos.CLN_CEDULA;
+      this.idCliente = datos.CLN_ID;
+      this.nombreTour = datos.TOU_NOMBRE;
+      this.fechaTour = datos.TOU_FECHA;
+      this.idTour = datos.TOU_ID;
       this.myForm.patchValue({
-        grp_id: datos.grp_id,
-        rep_gr: datos.rep_gr,
-        obs_gr: datos.obs_gr,
-        aho_acom: datos.aho_acom,
-        aho_extra: datos.aho_extra,
-        fecha_abono1: datos.aho_fecha1,
-        fecha_abono2: datos.aho_fecha2,
-        fecha_abono3: datos.aho_fecha3,
-        valor_abono1: datos.aho_abono1,
-        valor_abono2: datos.aho_abono2,
-        valor_abono3: datos.aho_abono3,
-        lugar_abono1: datos.aho_lugar1,
-        lugar_abono2: datos.aho_lugar2,
-        lugar_abono3: datos.aho_lugar3,
-        obs: datos.aho_obs
+        // id_gr: datos.grp_id,
+        // rep_gr: datos.rep_gr,
+        // obs_gr: datos.obs_gr,
+        aho_acom: datos.AHO_ACOM,
+        aho_extra: datos.AHO_EXTRA,
+        fecha_abono1: datos.AHO_FECHA_ABONO1,
+        fecha_abono2: datos.AHO_FECHA_ABONO2,
+        fecha_abono3: datos.AHO_FECHA_ABONO3,
+        valor_abono1: datos.AHO_ABONO1,
+        valor_abono2: datos.AHO_ABONO2,
+        valor_abono3: datos.AHO_ABONO3,
+        lugar_abono1: datos.AHO_CUEN_ABONO1,
+        lugar_abono2: datos.AHO_CUEN_ABONO2,
+        lugar_abono3: datos.AHO_CUEN_ABONO3,
+        obs: datos.AHO_OBSERVACIONES
       })
     });
   }
@@ -173,10 +168,10 @@ export class AddEditAhorroComponent implements OnInit {
 
   buscarCliente() {
     // console.log(this.idCliente);
-    this._clienteService.getCliente(this.idCliente).subscribe(datos => {
-      this.nombreCliente = datos.nombres;
-      this.cedulaCliente = datos.cedula;
-      this.idCliente = datos.id;
+    this._clienteService.getClienteReserva(this.cedulaCliente).subscribe(datos => {
+      this.nombreCliente = datos.CLN_NOMBRE;
+      this.cedulaCliente = datos.CLN_CEDULA;
+      this.idCliente = datos.CLN_ID;
       // console.log(this.nombreCliente);
     });
   }
@@ -184,9 +179,9 @@ export class AddEditAhorroComponent implements OnInit {
   buscarTour() {
     // console.log(this.idTour);
     this._toursService.getTour(this.idTour).subscribe(datos => {
-      this.nombreTour = datos.tou_name;
-      this.fechaTour = datos.tou_fecha;
-      this.idTour = datos.id;
+      this.nombreTour = datos.TOU_NOMBRE;
+      this.fechaTour = datos.TOU_FECHA;
+      this.idTour = datos.TOU_ID;
     });
   }
 
