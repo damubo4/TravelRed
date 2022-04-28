@@ -38,8 +38,7 @@ export class ToursComponent implements OnInit {
   }
 
   getTours(): void {
-      this._toursService.getTours().subscribe(datos => {
-
+          this._toursService.getTours().subscribe(datos => {
           this.listTours = datos;
           this.dataSourceTours = new MatTableDataSource(this.listTours);
           this.dataSourceTours.paginator = this.paginator;

@@ -11,7 +11,7 @@ import { ToursService } from 'src/app/services/tours/tours.service';
 })
 export class AddEditTourComponent implements OnInit {
 
-  myForm: FormGroup
+  myForm: FormGroup;
   idTour: any;
   accion = 'Agregar';
 

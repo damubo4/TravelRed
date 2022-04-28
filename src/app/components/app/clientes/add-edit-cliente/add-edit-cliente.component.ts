@@ -62,8 +62,6 @@ export class AddEditClienteComponent implements OnInit {
     if (((mes_nac - 1) == mes_hoy) && (dia_hoy < dia_nac)) {
       age--;
     }
-
-
     const CLIENTE = {
       cln_nombre: this.myForm.get('nombres').value,
       cln_apellido: this.myForm.get('apellidos').value,
