@@ -16,7 +16,7 @@ import { ToursService } from 'src/app/services/tours/tours.service';
 })
 export class ToursComponent implements OnInit {
 
-  displayedColumns: string[] = ['No.', 'nombreTour', 'fechaTour', 'tipoTour', 'valorNeto', 'valorComisionable', 'observacion', 'acciones'];
+  displayedColumns: string[] = ['No.', 'id_tour', 'nombreTour', 'fechaTour', 'tipoTour', 'valorNeto', 'valorComisionable', 'observacion', 'acciones'];
   dataSourceTours = new MatTableDataSource();
   listTours = [];
 

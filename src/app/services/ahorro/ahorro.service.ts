@@ -7,27 +7,29 @@ import { Observable } from 'rxjs';
 })
 export class AhorroService {
 
-  url = 'http://localhost:3000/ahorro/';
+  // url = 'http://localhost:3000/ahorro/';
+  url = 'https://travelred.herokuapp.com/ahorro/';
+
 
   constructor(private http: HttpClient) { }
 
   getAhorros(): Observable<any> {
-    return this.http.get<any>(this.url);
+    return this.http.get<any>(this.url + "lista_ahorros");
   }
 
   getAhorro(id): Observable<any> {
-    return this.http.get<any>(this.url + id);
+    return this.http.get<any>(this.url + "lista_ahorros/" + id);
   }
 
   addAhorro(ahorro): Observable<any> {
-    return this.http.post(this.url, ahorro)
+    return this.http.post(this.url + "add_ahorro", ahorro)
   }
 
   editAhorro(id: any, ahorro): Observable<any> {
-    return this.http.put(this.url + id, ahorro);
+    return this.http.post(this.url + "editar_ahorro/" + id, ahorro);
   }
 
   deleteAhorro(id: any): Observable<any> {
-    return this.http.delete(this.url + id);
+    return this.http.get(this.url + "eliminar_ahorro/" + id);
   }
 }

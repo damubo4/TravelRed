@@ -22,6 +22,11 @@
         <td mat-cell *matCellDef=" let i = index "> {{ i + 1 }} </td>
       </ng-container>
 
+      <ng-container class="me-3" matColumnDef="id_tour">
+        <th mat-header-cell *matHeaderCellDef> Id de tour </th>
+        <td mat-cell *matCellDef="let element"> {{ element.TOU_ID }} </td>
+      </ng-container>
+
       <ng-container class="me-3" matColumnDef="nombreTour">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
         <td mat-cell *matCellDef="let element"> {{element.TOU_NOMBRE}} </td>

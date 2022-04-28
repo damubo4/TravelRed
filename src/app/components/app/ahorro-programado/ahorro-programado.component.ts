@@ -41,8 +41,7 @@ export class AhorroProgramadoComponent implements OnInit {
   }
 
   getAhorros(): void {
-      this._ahorrosService.getAhorros().subscribe(datos => {
-
+          this._ahorrosService.getAhorros().subscribe(datos => {
           this.listAhorros = datos;
           this.dataSourceAhorros = new MatTableDataSource(this.listAhorros);
           this.dataSourceAhorros.paginator = this.paginator;
